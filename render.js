@@ -1,6 +1,8 @@
 // === Загрузка и отображение контента из digest.json ===
 
-const digestPath = window.location.pathname.replace(/\/?$/, "/digest.json");
+const urlParams = new URLSearchParams(window.location.search);
+const version = urlParams.get("v") || "2025-07-30";  // fallback
+const digestPath = `digest/${version}/digest.json`;
 
 fetch(digestPath)
   .then(res => res.json())
