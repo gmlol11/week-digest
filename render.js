@@ -1,6 +1,6 @@
 // === Загрузка и отображение контента из digest.json ===
 
-const digestPath = window.location.pathname.replace(/\/$/, "") + "/digest.json";
+const digestPath = window.location.pathname.replace(/\/?$/, "/digest.json");
 
 fetch(digestPath)
   .then(res => res.json())
