@@ -1,11 +1,14 @@
 // === Загрузка и отображение контента из digest.json ===
 
 const urlParams = new URLSearchParams(window.location.search);
-const version = urlParams.get("v") || "2025-07-30";  // fallback
+const version = urlParams.get("v") || "2025-07-30";
 const digestPath = `digest/${version}/digest.json`;
 
 fetch(digestPath)
-  .then(res => res.json())
+  .then(res => {
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    return res.json();
+  })
   .then(data => {
     const content = document.getElementById("content");
     content.innerHTML = "";
@@ -24,14 +27,14 @@ fetch(digestPath)
 
       if (block.type === "image-block") {
         const imgs = block.images.map(src =>
-          `<img src="assets/${src}" alt="мем" />`
+          `<img src="digest/${version}/assets/${src}" alt="мем" />`
         ).join("");
         section.innerHTML += `<div class="images">${imgs}</div>`;
       }
 
       if (block.type === "video-block") {
         const vids = block.videos.map(src =>
-          `<video controls src="assets/${src}"></video>`
+          `<video controls src="digest/${version}/assets/${src}"></video>`
         ).join("");
         section.innerHTML += `<div class="videos">${vids}</div>`;
       }
