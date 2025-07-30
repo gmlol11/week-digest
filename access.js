@@ -3,7 +3,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const token = urlParams.get('token');
 
 // Список допустимых токенов (можно вынести в отдельный JSON или API позже)
-const allowedTokens = ["demo123", "abc456", "281dfe352006"];
+const allowedTokens = ["demo123", "1", "281dfe352006"];
 
 if (!allowedTokens.includes(token)) {
   document.body.innerHTML = "<h2 style='text-align:center;margin-top:3rem;'>Доступ запрещён</h2>";
