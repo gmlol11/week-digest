@@ -1,55 +1,69 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #f9f9f9;
-  color: #222;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
+/* ---------- Dark palette tokens ---------- */
+:root {
+    --bg-dark: #0d1117;
+    --panel-dark: #161b22;
+    --text-main: #e6edf3;
+
+    --accent-blue:   #3b82f6;
+    --accent-red:    #f44336;
+    --accent-yellow: #ffca28;
 }
 
-#content {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem 1rem;
+/* ---------- Base ---------- */
+html,body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: "Roboto", sans-serif;
 }
 
-.section {
-  padding: 2rem 0;
-  border-bottom: 1px solid #ddd;
+header,
+footer { background: transparent; }
+
+main.container {
+    /* растягиваем контейнер на всю ширину, но оставляем внутренние отступы */
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 1rem;
 }
 
-h2 {
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
+/* ---------- Card-панели ---------- */
+.card-panel {
+    background: var(--panel-dark);
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
 }
 
-.subtitle {
-  color: #666;
-  margin-bottom: 1rem;
-  font-size: 1rem;
+/* ---------- Цветовые акценты ---------- */
+.accent-blue   { color: var(--accent-blue)   !important; }
+.accent-red    { color: var(--accent-red)    !important; }
+.accent-yellow { color: var(--accent-yellow) !important; }
+
+/* ---------- Типографика (адаптивная) ---------- */
+h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); }
+h2 { font-size: clamp(1.4rem, 4vw, 2.2rem); }
+p  { font-size: clamp(0.95rem, 3.5vw, 1.1rem); }
+h1, h2, h3, h4, h5 { margin: 0 0 0.8rem; }
+
+a { color: var(--accent-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- Carousel images ---------- */
+.carousel .carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
 }
 
-.images, .videos, .links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+/* ---------- Range sliders в тёмной теме ---------- */
+input[type="range"] + .thumb {
+    background: var(--accent-yellow);
+}
+input[type="range"]::-webkit-slider-thumb {
+    background: var(--accent-yellow);
 }
 
-.images img,
-.videos video {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  flex: 1 1 45%;
-}
-
-.links a {
-  display: block;
-  color: #0066cc;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.links a:hover {
-  text-decoration: underline;
-}
+/* ---------- Мелкие правки ---------- */
+.mt-1 { margin-top: 0.5rem; }          /* пояснения под ссылкой */
+.responsive-video { border-radius: 6px; }

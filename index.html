@@ -3,13 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Еженедельный дайджест</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Еженедельный дайджест — Выпуск №01</title>
+
+  <!-- Materialize CSS & Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
 </head>
 <body>
-  <div id="content">Загрузка дайджеста...</div>
 
- <!-- <script src="access.js"></script> -->
-  <script src="render.js"></script>
+<!-- ──────── Header / Banner ──────── -->
+<header class="center-align section">
+  <img src="logo.svg" alt="Логотип" style="height:58px" class="mb-2">
+  <h1 class="white-text">Еженедельный дайджест</h1>
+  <p class="grey-text text-lighten-1">Выпуск №01 &mdash; 1 августа 2025</p>
+</header>
+
+<main class="container">
+  <!-- Главная новость -->
+  <section class="card-panel z-depth-1">
+    <h2 class="accent-blue">Главная новость</h2>
+    <div class="row">
+      <div class="col s12 m6">
+        <img src="news-image.jpg" alt="Новость" class="responsive-img">
+      </div>
+      <div class="col s12 m6">
+        <p>Сопроводительный текст к изображению. Объяснение контекста, реакция команды или читателей.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Карусель мемов -->
+  <section class="card-panel z-depth-1">
+    <h2 class="accent-yellow">Карусель мемов</h2>
+    <div class="carousel carousel-slider center">
+      <a class="carousel-item" href="#m1"><img src="meme1.jpg" alt="мем 1" class="responsive-img"></a>
+      <a class="carousel-item" href="#m2"><img src="meme2.jpg" alt="мем 2" class="responsive-img"></a>
+      <a class="carousel-item" href="#m3"><img src="meme3.jpg" alt="мем 3" class="responsive-img"></a>
+    </div>
+  </section>
+
+  <!-- Видео дайджест -->
+  <section class="card-panel z-depth-1">
+    <h2 class="accent-red">Видео‑дайджест</h2>
+    <video id="vid-player" class="responsive-video z-depth-1" controls>
+      <source src="clip1.mp4" type="video/mp4">
+      Ваш браузер не поддерживает видео тег.
+    </video>
+    <div class="center-align section">
+      <button data-src="clip1.mp4" class="btn-small grey darken-3 waves-effect waves-light">1</button>
+      <button data-src="clip2.mp4" class="btn-small grey darken-3 waves-effect waves-light">2</button>
+      <button data-src="clip3.mp4" class="btn-small grey darken-3 waves-effect waves-light">3</button>
+    </div>
+  </section>
+
+  <!-- Полезное + Опрос -->
+  <section class="card-panel z-depth-1">
+    <h2 class="accent-blue">Полезное</h2>
+    <div class="section">
+      <a href="https://example.com" target="_blank" class="btn-flat grey darken-3 white-text waves-effect">Ссылка недели</a>
+      <p class="mt-1">Короткое пояснение — почему эта ссылка полезна.</p>
+    </div>
+
+    <form>
+      <p class="accent-yellow">Насколько вам зашла идея выпуска?</p>
+      <p class="range-field">
+        <input type="range" name="q1" min="1" max="5" />
+      </p>
+      <p class="accent-yellow">Оцените полезность подборки ссылок</p>
+      <p class="range-field">
+        <input type="range" name="q2" min="1" max="5" />
+      </p>
+      <button type="submit" class="btn accent-blue waves-effect waves-light">Отправить</button>
+    </form>
+  </section>
+
+  <!-- Фраза недели -->
+  <section class="card-panel z-depth-1 center-align">
+    <blockquote class="grey-text text-lighten-2">
+      «Фраза недели или цитата, завершающая выпуск.»
+    </blockquote>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="center-align section">
+  <a href="../index.html" class="white-text">Архив выпусков</a>
+</footer>
+
+<!-- Materialize JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+  // Инициализация карусели
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousels = document.querySelectorAll('.carousel');
+    M.Carousel.init(carousels, { fullWidth: true, indicators: true });
+  });
+
+  // Видео навигация
+  const vidButtons = document.querySelectorAll('[data-src]');
+  const player = document.getElementById('vid-player');
+  vidButtons.forEach(btn => btn.addEventListener('click', () => {
+    player.pause();
+    player.querySelector('source').src = btn.dataset.src;
+    player.load();
+    player.play();
+  }));
+</script>
 </body>
 </html>
